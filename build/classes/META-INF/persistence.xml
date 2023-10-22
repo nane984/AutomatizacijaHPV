@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="AutomatizacijaHPVPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>db.Jedmere</class>
+    <class>db.Merenja</class>
+    <class>db.Merenjeprotoka</class>
+    <class>db.Regvent</class>
+    <class>db.Pregvent</class>
+    <class>db.Merenjenivoa</class>
+    <class>db.Merenjepritiska</class>
+    <class>dbService.Pregventodrzavanje</class>
+    <class>db.Pregventodrzavanje</class>
+    <class>db.Pumpeuptime</class>
+    <class>db.Pumpeodrzavanje</class>
+    <class>db.Kumulativno</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ScadaHPV"/>
+      <property name="javax.persistence.jdbc.user" value="scada"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="beton0602984"/>
+    </properties>
+  </persistence-unit>
+</persistence>
