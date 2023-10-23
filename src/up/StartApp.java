@@ -59,6 +59,7 @@ import javax.swing.Timer;
 import javax.swing.UIManager;
 import popup.Privremeno;
 import tools.ShiftPoint;
+import utilise.Convert;
 import viewScreen.MainFrame;
 import virtual.doziranje.Doziranje;
 
@@ -619,7 +620,7 @@ public class StartApp {
 
     //privremeno za ispiranje 
     private void privremenoIspiranjeMulja() {
-        float kumulativno = Float.parseFloat(intToLongPrivremeno(protociFlokulacija.getProtokSiroveVodeR1().getKumulativnoVisiVrednost(), protociFlokulacija.getProtokSiroveVodeR1().getKumulativnoNiziVrednost()));
+        float kumulativno = Float.parseFloat(Convert.intToLongPrivremeno(protociFlokulacija.getProtokSiroveVodeR1().getKumulativnoVisiVrednost(), protociFlokulacija.getProtokSiroveVodeR1().getKumulativnoNiziVrednost()));
         if (kumulativno > (privremenoIspiranjeMulja + 400)) {
 
             ProzorPrivremeno.setVisible(true);
@@ -627,14 +628,5 @@ public class StartApp {
         }
     }
 
-    private String intToLongPrivremeno(int visi, int nizi) {
-        int a = 0;
-        try {
-            a = visi << 16 | nizi & 0xFFFF;
-            return ShiftPoint.shiftonePoint(a, 1);
-        } catch (Exception e) {
-
-        }
-        return "*";
-    }
+   
 }

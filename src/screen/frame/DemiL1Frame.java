@@ -20,8 +20,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import popup.AllPopUpWindow;
 import tools.AnalogToDigital;
-import tools.Convert;
 import tools.ShiftPoint;
+import utilise.Convert;
 
 /**
  *
@@ -61,7 +61,7 @@ public class DemiL1Frame extends javax.swing.JInternalFrame {
         this.allPopUpWindow = allPopUpWindow;
         this.img = img;
         
-        protociDemiLinije.getProtokMagistralniVod().setBrCiklusaDo1Sec(5);
+        protociDemiLinije.getProtokDL1in().setBrCiklusaDo1Sec(5);
         setMinMax();
         screenRefresh();
     }
@@ -1258,16 +1258,15 @@ public class DemiL1Frame extends javax.swing.JInternalFrame {
                 protociDemiLinije.getProtokDL1in().izracunajKumuativnoRucno(
                         protociDemiLinije.getProtokDL1in().getProtok().getVrednostRegistra()));
        
-         jLabelProtokDemiLinijaInBr1.setText(Integer.toString(protociDemiLinije.getProtokDL1in().getProtok().getVrednostRegistra()) + " m3/h");
-         jLabelKumulativnoInDL1.setText(Double.toString(protociDemiLinije.getProtokDL1in().getKumulativnoRucno()));
+        jLabelProtokDemiLinijaInBr1.setText(Integer.toString(protociDemiLinije.getProtokDL1in().getProtok().getVrednostRegistra()) + " m3/h");
+        jLabelKumulativnoInDL1.setText(Convert.getRoundDouble(protociDemiLinije.getProtokDL1in().getKumulativnoRucno(), 2));
         
         jLabelProtokDemiLinijaOutBr1.setText(Integer.toString(protociDemiLinije.getProtokDL1out().getProtok().getVrednostRegistra()) + " m3/h");
         jLabelKumulativnoOutDL1.setText(Convert.intToLong(protociDemiLinije.getProtokDL1out().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL1out().getKumulativnoNiziVrednost()));
         jLabelProtokDemiLinijaMagistrala1.setText(Integer.toString(protociDemiLinije.getProtokMagistralniVod().getProtok().getVrednostRegistra()) + " m3/h");
         
 
-        jLabelKumulativnoDemiLinijaMagistrala1.setText(Convert.intToLong(protociDemiLinije.getProtokMagistralniVod().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokMagistralniVod().getKumulativnoNiziVrednost()));          
-            
+        jLabelKumulativnoDemiLinijaMagistrala1.setText(Convert.intToLong(protociDemiLinije.getProtokMagistralniVod().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokMagistralniVod().getKumulativnoNiziVrednost()));            
         
     }
 

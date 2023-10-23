@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,17 +24,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Kumulativno.findAll", query = "SELECT k FROM Kumulativno k")
-    , @NamedQuery(name = "Kumulativno.findById", query = "SELECT k FROM Kumulativno k WHERE k.id = :id")
     , @NamedQuery(name = "Kumulativno.findByTehozn", query = "SELECT k FROM Kumulativno k WHERE k.tehozn = :tehozn")
     , @NamedQuery(name = "Kumulativno.findByVrednost", query = "SELECT k FROM Kumulativno k WHERE k.vrednost = :vrednost")})
 public class Kumulativno implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
     @Basic(optional = false)
     @Column(name = "tehozn")
     private String tehozn;
@@ -47,22 +40,13 @@ public class Kumulativno implements Serializable {
     public Kumulativno() {
     }
 
-    public Kumulativno(Long id) {
-        this.id = id;
+    public Kumulativno(String tehozn) {
+        this.tehozn = tehozn;
     }
 
-    public Kumulativno(Long id, String tehozn, double vrednost) {
-        this.id = id;
+    public Kumulativno(String tehozn, double vrednost) {
         this.tehozn = tehozn;
         this.vrednost = vrednost;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTehozn() {
@@ -84,7 +68,7 @@ public class Kumulativno implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (tehozn != null ? tehozn.hashCode() : 0);
         return hash;
     }
 
@@ -95,7 +79,7 @@ public class Kumulativno implements Serializable {
             return false;
         }
         Kumulativno other = (Kumulativno) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.tehozn == null && other.tehozn != null) || (this.tehozn != null && !this.tehozn.equals(other.tehozn))) {
             return false;
         }
         return true;
@@ -103,7 +87,7 @@ public class Kumulativno implements Serializable {
 
     @Override
     public String toString() {
-        return "db.Kumulativno[ id=" + id + " ]";
+        return "db.Kumulativno[ tehozn=" + tehozn + " ]";
     }
     
 }

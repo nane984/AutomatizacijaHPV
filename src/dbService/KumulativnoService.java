@@ -33,9 +33,9 @@ public class KumulativnoService {
 
             kumulativno.setTehozn(tehOznaka1);
             kumulativno.setVrednost(0);
-            
+
             em.persist(kumulativno);
-            
+
             em.getTransaction().commit();
             em.close();
             return kumulativno;
@@ -61,29 +61,26 @@ public class KumulativnoService {
             return result;
 
         } catch (Exception ex) {
-            return addKumulativno(tehOzn);
+           
+            db.Kumulativno kumulativno = new db.Kumulativno();
+            return kumulativno;
         }
     }
 
     public void setKumulativno(String tehOzn, double kum) {
-        db.Kumulativno kumul = getKumulativnoStanje(tehOzn);
-        if (kumul.getTehozn().equals("__")) {
+        try {
+            EntityManager em = emf.createEntityManager();
+            db.Kumulativno kumulativno = em.find(db.Kumulativno.class, tehOzn);
+            em.getTransaction().begin();
+
+            kumulativno.setVrednost(kum);
+
+            em.persist(kumulativno);
+            em.getTransaction().commit();
+            em.close();
+
+        } catch (Exception ex) {
             addKumulativno(tehOzn);
-        } else {
-            db.Kumulativno kumulativno = getKumulativnoStanje(tehOzn);
-            try {
-                EntityManager em = emf.createEntityManager();
-                em.getTransaction().begin();
-
-                kumulativno.setVrednost(kum);
-
-                em.persist(kumulativno);
-                em.getTransaction().commit();
-                em.close();
-
-            } catch (Exception ex) {
-
-            }
         }
     }
 }

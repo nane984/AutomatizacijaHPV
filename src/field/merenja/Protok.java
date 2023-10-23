@@ -19,8 +19,8 @@ public class Protok {
     private int kumulativnoVisiVrednost;
     private double kumulativnoRucno;
     
-    private int brCiklusaDo1Sec = 0;
-    private int vreme = 0;
+    private int brCiklusaDo1Sec = 1;
+    private int vreme = 1;
     
     private boolean promena = false; 
 
@@ -35,7 +35,7 @@ public class Protok {
     
     public double izracunajKumuativnoRucno(int trenutno){
         double result = 0;
-        if(trenutno!=0 && trenutno > 0 && vreme == brCiklusaDo1Sec-1){
+        if(trenutno > 0 && vreme > brCiklusaDo1Sec-1){
             result = Double.valueOf(trenutno)/3600;
             vreme = 0;
             promena = true;

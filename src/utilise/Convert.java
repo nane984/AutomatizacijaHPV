@@ -5,6 +5,8 @@
  */
 package utilise;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -117,6 +119,17 @@ public class Convert {
         return date;
     }
      
+      public static String intToLong(int visi, int nizi) {
+        int a = 0;
+        try {
+            a = visi << 16 | nizi & 0xFFFF;
+            return ShiftPoint.shiftonePoint(a, 1) + " m3";
+        } catch (Exception e) {
+
+        }
+        return "*";
+    }
+     
     public static String intToLongPrivremeno(int visi, int nizi) {
         int a = 0;
         try {
@@ -126,5 +139,11 @@ public class Convert {
 
         }
         return "*";
+    }
+    
+    public static String getRoundDouble(Double db, int Format){
+        BigDecimal bd = new BigDecimal(Double.toString(db));
+        bd = bd.setScale(Format, RoundingMode.HALF_UP);
+        return bd.toString();
     }
 }

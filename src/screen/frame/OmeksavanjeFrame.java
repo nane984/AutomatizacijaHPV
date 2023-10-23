@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import popup.AllPopUpWindow;
 import tools.AnalogToDigital;
-import static tools.Convert.intToLong;
+import static utilise.Convert.intToLong;
 import tools.ShiftPoint;
 
 /**
