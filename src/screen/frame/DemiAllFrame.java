@@ -24,6 +24,7 @@ import popup.AllPopUpWindow;
 import tools.AnalogToDigital;
 import static utilise.Convert.intToLong;
 import tools.ShiftPoint;
+import utilise.Convert;
 
 /**
  *
@@ -1131,24 +1132,20 @@ public class DemiAllFrame extends javax.swing.JInternalFrame {
         jLabelProtokDemiLinijaOutCopyBr2.setText(Integer.toString(protociDemiLinije.getProtokDL2out().getProtok().getVrednostRegistra()) + " m3/h");
         jLabelProtokDemiLinijaOutCopyBr3.setText(Integer.toString(protociDemiLinije.getProtokDL3out().getProtok().getVrednostRegistra()) + " m3/h");
 
-       
-     
-
-        jLabelKumulativnoOutDLCopyBr1.setText(intToLong(protociDemiLinije.getProtokDL1out().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL1out().getKumulativnoNiziVrednost()));
+        //jLabelKumulativnoOutDLCopyBr1.setText(intToLong(protociDemiLinije.getProtokDL1out().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL1out().getKumulativnoNiziVrednost()));
+        jLabelKumulativnoOutDLCopyBr1.setText(Convert.getRoundDouble(protociDemiLinije.getProtokDL1out().getKumulativnoRucno(), 2)+ " m3");
+        
         jLabelKumulativnoOutDLCopyBr2.setText(intToLong(protociDemiLinije.getProtokDL2out().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL2out().getKumulativnoNiziVrednost()));
         jLabelKumulativnoOutDLCopyBr3.setText(intToLong(protociDemiLinije.getProtokDL3out().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL3out().getKumulativnoNiziVrednost()));
 
-        
-
         jLabelProtokDemiLinijaMagistrala.setText(Integer.toString(protociDemiLinije.getProtokMagistralniVod().getProtok().getVrednostRegistra()) + " m3/h");
         jLabelKumulativnoDemiLinijaMagistrala.setText(intToLong(protociDemiLinije.getProtokMagistralniVod().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokMagistralniVod().getKumulativnoNiziVrednost()));
- 
-
-        jLabelKumulativnoDL1CopyDL.setText(intToLong(protociDemiLinije.getProtokDL1in().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL1in().getKumulativnoNiziVrednost()));
+         
+        //jLabelKumulativnoDL1CopyDL.setText(intToLong(protociDemiLinije.getProtokDL1in().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL1in().getKumulativnoNiziVrednost()));
+        jLabelKumulativnoDL1CopyDL.setText(Convert.getRoundDouble(protociDemiLinije.getProtokDL1in().getKumulativnoRucno(), 2) + " m3");
         jLabelKumulativnoDL2CopyDL.setText(intToLong(protociDemiLinije.getProtokDL2in().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL2in().getKumulativnoNiziVrednost()));
         jLabelKumulativnoDL3CopyDL.setText(intToLong(protociDemiLinije.getProtokDL3in().getKumulativnoVisiVrednost(), protociDemiLinije.getProtokDL3in().getKumulativnoNiziVrednost()));
 
- 
         jLabelPretovarnaLuzina.setText(Integer.toString(protociPretovarnaRampa.getProtokLuzine().getProtok().getVrednostRegistra()) + " m3/h");
         jLabelPretovarnaKiselina.setText(Integer.toString(protociPretovarnaRampa.getProtokKiseline().getProtok().getVrednostRegistra()) + " m3/h");
 

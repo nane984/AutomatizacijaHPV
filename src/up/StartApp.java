@@ -267,6 +267,7 @@ public class StartApp {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         osn.privremenoIspiranjeMulja();
+                        osn.proracunKumulativnogProtoka();
                         if (!StartApp.comm.isConnected()) {
                             comm.read = false;
                             osn.restartConnection();
@@ -455,13 +456,33 @@ public class StartApp {
             kumulativnoService.setKumulativno("demi1In", protociDemiLinije.getProtokDL1in().getKumulativnoRucno());
             protociDemiLinije.getProtokDL1in().setPromena(false);
         }
+        if(protociDemiLinije.getProtokDL1out().isPromena()){
+            kumulativnoService.setKumulativno("demi1Out", protociDemiLinije.getProtokDL1out().getKumulativnoRucno());
+            protociDemiLinije.getProtokDL1out().setPromena(false);
+        }
     }
     
     private void initKumulatinvniProtok() {
+        protociDemiLinije.getProtokDL1in().setBrCiklusaDo1Sec(1);
+        protociDemiLinije.getProtokDL1out().setBrCiklusaDo1Sec(1);
         
         protociDemiLinije.getProtokDL1in().setKumulativnoRucno(kumulativnoService.getKumulativnoStanje("demi1In").getVrednost());
         protociDemiLinije.getProtokDL1in().setPromena(false);
         
+        protociDemiLinije.getProtokDL1out().setKumulativnoRucno(kumulativnoService.getKumulativnoStanje("demi1Out").getVrednost());
+        protociDemiLinije.getProtokDL1out().setPromena(false);
+    }
+    
+    private void proracunKumulativnogProtoka(){
+        //zbog problema sa kumulativnim merenjem protoka
+         protociDemiLinije.getProtokDL1in().setKumulativnoRucno(
+                protociDemiLinije.getProtokDL1in().izracunajKumuativnoRucno(
+                        protociDemiLinije.getProtokDL1in().getProtok().getVrednostRegistra()));
+        
+        //zbog problema sa kumulativnim merenjem protoka
+        protociDemiLinije.getProtokDL1out().setKumulativnoRucno(
+                protociDemiLinije.getProtokDL1out().izracunajKumuativnoRucno(
+                        protociDemiLinije.getProtokDL1out().getProtok().getVrednostRegistra()));
     }
     
 
